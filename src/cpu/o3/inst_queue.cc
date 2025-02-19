@@ -616,8 +616,7 @@ InstructionQueue::execLatencyCheck(const DynInstPtr& inst, uint32_t& op_latency)
                     if (__isnanf(*((float*)(&rs1))) ||
                         __isnanf(*((float*)(&rs2))) ||
                         __isinff(*((float*)(&rs1))) ||
-                        __isinff(*((float*)(&rs2))) ||
-                        (*((float*)(&rs2)) - 1.0f < 1e-6f)) {
+                        __isinff(*((float*)(&rs2)))) {
                         op_latency = 2;
                         break;
                     }
@@ -627,8 +626,7 @@ InstructionQueue::execLatencyCheck(const DynInstPtr& inst, uint32_t& op_latency)
                     if (__isnan(*((double*)(&rs1))) ||
                         __isnan(*((double*)(&rs2))) ||
                         __isinf(*((double*)(&rs1))) ||
-                        __isinf(*((double*)(&rs2))) ||
-                        (*((double*)(&rs2)) - 1.0 < 1e-15)) {
+                        __isinf(*((double*)(&rs2)))) {
                         op_latency = 2;
                         break;
                     }
